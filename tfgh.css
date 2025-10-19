@@ -159,3 +159,177 @@
             display: flex;
             align-items: center;
             justify-content: center;
+
+                     transition: background-color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: #6a5acd;
+        }
+        
+        /* Футер */
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #000000;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Анимации */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .about-content, .contact-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav>
+        <a href="#" class="logo">MYTH STUDIO</a>
+        <div class="nav-links">
+            <a href="#about">О нас</a>
+            <a href="#team">Команда</a>
+            <a href="#contact">Контакты</a>
+        </div>
+    </nav>
+    
+    <!-- Герой-секция -->
+    <section class="hero">
+        <h1 class="floating">MYTH STUDIO</h1>
+        <p>Создаем цифровые миры и уникальные впечатления</p>
+        <a href="#about" class="cta-button">Узнать больше</a>
+    </section>
+    
+    <!-- Секция "О нас" -->
+    <section id="about" class="about">
+        <h2 class="section-title">О нас</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Myth Studio - это команда талантливых разработчиков, дизайнеров и креативных специалистов, объединенных общей страстью к созданию уникальных цифровых продуктов.</p>
+                <p>Мы специализируемся на разработке игр, веб-приложений и интерактивных решений, которые вдохновляют и удивляют.</p>
+                <p>Наша студия сочетает в себе техническое мастерство и художественное видение, чтобы создавать проекты, которые оставляют след в сердцах пользователей.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Секция "Наша команда" -->
+    <section id="team" class="team">
+        <div class="team-container">
+            <h2 class="section-title">Наша команда</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">M</div>
+                    <h3 class="member-name">makc66600</h3>
+                    <p class="member-role">Основатель / Генеральный директор</p>
+                    <p>Стратегическое видение и управление проектами</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">A</div>
+                    <h3 class="member-name">AlexDev</h3>
+                    <p class="member-role">Ведущий разработчик</p>
+                    <p>Архитектура и реализация сложных систем</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">L</div>
+                    <h3 class="member-name">LunaDesign</h3>
+                    <p class="member-role">Главный дизайнер</p>
+                    <p>Создание визуальной идентичности и UI/UX</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">K</div>
+                    <h3 class="member-name">KiraSound</h3>
+                    <p class="member-role">Звукорежиссер</p>
+                    <p>Создание атмосферных саундтреков и звуковых эффектов</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Секция "Контакты" -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Свяжитесь с нами</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i>📱</i>
+
+                    <span>Telegram: <a href="https://t.me/+AaXRS6t2IzAzNzNi" style="color: #6a5acd;">@mythstudio</a></span>
+                </div>
+                <div class="contact-item">
+                    <i>📧</i>
+                    <span>Email: contact@mythstudio.com</span>
+                </div>
+                <div class="contact-item">
+                    <i>🌐</i>
+                    <span>GitHub: <a href="https://github.com/makc66600/myth-studio" style="color: #6a5acd;">github.com/makc66600/myth-studio</a></span>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://t.me/+AaXRS6t2IzAzNzNi" class="social-link">TG</a>
+                    <a href="https://github.com/makc66600/myth-studio" class="social-link">GH</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Футер -->
+    <footer>
+        <p>&copy; 2023 Myth Studio. Все права защищены.</p>
+    </footer>
+    
+    <script>
+        // Плавная прокрутка для навигационных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Анимация появления элементов при прокрутке
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Применяем анимацию к секциям
+        document.querySelectorAll('.about, .team, .contact').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s, transform 0.6s';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
